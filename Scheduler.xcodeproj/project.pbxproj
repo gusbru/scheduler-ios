@@ -19,6 +19,12 @@
 		757A1459246310D90032F966 /* SavedSchedulesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757A1458246310D90032F966 /* SavedSchedulesViewController.swift */; };
 		757A145B2463117B0032F966 /* ResultSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757A145A2463117B0032F966 /* ResultSearchViewController.swift */; };
 		757A145D24631E270032F966 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757A145C24631E270032F966 /* MainTabBarViewController.swift */; };
+		75AAA5DC24636F31007FEED4 /* SchedulerClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AAA5DB24636F31007FEED4 /* SchedulerClient.swift */; };
+		75AAA5E024637836007FEED4 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AAA5DF24637836007FEED4 /* ErrorResponse.swift */; };
+		75AAA5E22463793E007FEED4 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AAA5E12463793E007FEED4 /* LoginRequest.swift */; };
+		75AAA5E42463797F007FEED4 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AAA5E32463797F007FEED4 /* LoginResponse.swift */; };
+		75AAA5E624637B47007FEED4 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AAA5E524637B47007FEED4 /* File.swift */; };
+		75AAA5E824637B8E007FEED4 /* SignInResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AAA5E724637B8E007FEED4 /* SignInResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +42,12 @@
 		757A1458246310D90032F966 /* SavedSchedulesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedSchedulesViewController.swift; sourceTree = "<group>"; };
 		757A145A2463117B0032F966 /* ResultSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultSearchViewController.swift; sourceTree = "<group>"; };
 		757A145C24631E270032F966 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
+		75AAA5DB24636F31007FEED4 /* SchedulerClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulerClient.swift; sourceTree = "<group>"; };
+		75AAA5DF24637836007FEED4 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
+		75AAA5E12463793E007FEED4 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
+		75AAA5E32463797F007FEED4 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
+		75AAA5E524637B47007FEED4 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		75AAA5E724637B8E007FEED4 /* SignInResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,9 +116,39 @@
 		757A1453246240120032F966 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				75AAA5DE2463747E007FEED4 /* Requests */,
+				75AAA5D924636E5D007FEED4 /* Responses */,
+				75AAA5D824636E55007FEED4 /* Data */,
 				757A144324623F9A0032F966 /* Scheduler.xcdatamodeld */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		75AAA5D824636E55007FEED4 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				75AAA5DB24636F31007FEED4 /* SchedulerClient.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		75AAA5D924636E5D007FEED4 /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				75AAA5DF24637836007FEED4 /* ErrorResponse.swift */,
+				75AAA5E32463797F007FEED4 /* LoginResponse.swift */,
+				75AAA5E724637B8E007FEED4 /* SignInResponse.swift */,
+			);
+			path = Responses;
+			sourceTree = "<group>";
+		};
+		75AAA5DE2463747E007FEED4 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				75AAA5E12463793E007FEED4 /* LoginRequest.swift */,
+				75AAA5E524637B47007FEED4 /* File.swift */,
+			);
+			path = Requests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,10 +225,16 @@
 				757A1457246310CA0032F966 /* SearchViewController.swift in Sources */,
 				757A1459246310D90032F966 /* SavedSchedulesViewController.swift in Sources */,
 				757A143F24623F9A0032F966 /* LoginViewController.swift in Sources */,
+				75AAA5E824637B8E007FEED4 /* SignInResponse.swift in Sources */,
+				75AAA5E22463793E007FEED4 /* LoginRequest.swift in Sources */,
 				757A145D24631E270032F966 /* MainTabBarViewController.swift in Sources */,
+				75AAA5DC24636F31007FEED4 /* SchedulerClient.swift in Sources */,
+				75AAA5E42463797F007FEED4 /* LoginResponse.swift in Sources */,
 				757A144524623F9A0032F966 /* Scheduler.xcdatamodeld in Sources */,
 				757A143B24623F9A0032F966 /* AppDelegate.swift in Sources */,
+				75AAA5E624637B47007FEED4 /* File.swift in Sources */,
 				757A1455246310980032F966 /* SignInViewController.swift in Sources */,
+				75AAA5E024637836007FEED4 /* ErrorResponse.swift in Sources */,
 				757A145B2463117B0032F966 /* ResultSearchViewController.swift in Sources */,
 				757A143D24623F9A0032F966 /* SceneDelegate.swift in Sources */,
 			);
