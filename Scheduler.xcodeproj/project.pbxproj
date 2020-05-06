@@ -9,23 +9,33 @@
 /* Begin PBXBuildFile section */
 		757A143B24623F9A0032F966 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757A143A24623F9A0032F966 /* AppDelegate.swift */; };
 		757A143D24623F9A0032F966 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757A143C24623F9A0032F966 /* SceneDelegate.swift */; };
-		757A143F24623F9A0032F966 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757A143E24623F9A0032F966 /* ViewController.swift */; };
+		757A143F24623F9A0032F966 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757A143E24623F9A0032F966 /* LoginViewController.swift */; };
 		757A144224623F9A0032F966 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 757A144024623F9A0032F966 /* Main.storyboard */; };
 		757A144524623F9A0032F966 /* Scheduler.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 757A144324623F9A0032F966 /* Scheduler.xcdatamodeld */; };
 		757A144724623F9B0032F966 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 757A144624623F9B0032F966 /* Assets.xcassets */; };
 		757A144A24623F9B0032F966 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 757A144824623F9B0032F966 /* LaunchScreen.storyboard */; };
+		757A1455246310980032F966 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757A1454246310980032F966 /* SignInViewController.swift */; };
+		757A1457246310CA0032F966 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757A1456246310CA0032F966 /* SearchViewController.swift */; };
+		757A1459246310D90032F966 /* SavedSchedulesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757A1458246310D90032F966 /* SavedSchedulesViewController.swift */; };
+		757A145B2463117B0032F966 /* ResultSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757A145A2463117B0032F966 /* ResultSearchViewController.swift */; };
+		757A145D24631E270032F966 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757A145C24631E270032F966 /* MainTabBarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		757A143724623F9A0032F966 /* Scheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		757A143A24623F9A0032F966 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		757A143C24623F9A0032F966 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		757A143E24623F9A0032F966 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		757A143E24623F9A0032F966 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		757A144124623F9A0032F966 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		757A144424623F9A0032F966 /* Scheduler.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Scheduler.xcdatamodel; sourceTree = "<group>"; };
 		757A144624623F9B0032F966 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		757A144924623F9B0032F966 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		757A144B24623F9B0032F966 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		757A1454246310980032F966 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		757A1456246310CA0032F966 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		757A1458246310D90032F966 /* SavedSchedulesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedSchedulesViewController.swift; sourceTree = "<group>"; };
+		757A145A2463117B0032F966 /* ResultSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultSearchViewController.swift; sourceTree = "<group>"; };
+		757A145C24631E270032F966 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,15 +69,44 @@
 			isa = PBXGroup;
 			children = (
 				757A143A24623F9A0032F966 /* AppDelegate.swift */,
-				757A143C24623F9A0032F966 /* SceneDelegate.swift */,
-				757A143E24623F9A0032F966 /* ViewController.swift */,
-				757A144024623F9A0032F966 /* Main.storyboard */,
+				757A1453246240120032F966 /* Model */,
+				757A145224623FE60032F966 /* Controller */,
+				757A145124623FA70032F966 /* View */,
 				757A144624623F9B0032F966 /* Assets.xcassets */,
-				757A144824623F9B0032F966 /* LaunchScreen.storyboard */,
 				757A144B24623F9B0032F966 /* Info.plist */,
-				757A144324623F9A0032F966 /* Scheduler.xcdatamodeld */,
 			);
 			path = Scheduler;
+			sourceTree = "<group>";
+		};
+		757A145124623FA70032F966 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				757A144824623F9B0032F966 /* LaunchScreen.storyboard */,
+				757A144024623F9A0032F966 /* Main.storyboard */,
+				757A143C24623F9A0032F966 /* SceneDelegate.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		757A145224623FE60032F966 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				757A143E24623F9A0032F966 /* LoginViewController.swift */,
+				757A1454246310980032F966 /* SignInViewController.swift */,
+				757A1456246310CA0032F966 /* SearchViewController.swift */,
+				757A1458246310D90032F966 /* SavedSchedulesViewController.swift */,
+				757A145A2463117B0032F966 /* ResultSearchViewController.swift */,
+				757A145C24631E270032F966 /* MainTabBarViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		757A1453246240120032F966 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				757A144324623F9A0032F966 /* Scheduler.xcdatamodeld */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,9 +180,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				757A143F24623F9A0032F966 /* ViewController.swift in Sources */,
+				757A1457246310CA0032F966 /* SearchViewController.swift in Sources */,
+				757A1459246310D90032F966 /* SavedSchedulesViewController.swift in Sources */,
+				757A143F24623F9A0032F966 /* LoginViewController.swift in Sources */,
+				757A145D24631E270032F966 /* MainTabBarViewController.swift in Sources */,
 				757A144524623F9A0032F966 /* Scheduler.xcdatamodeld in Sources */,
 				757A143B24623F9A0032F966 /* AppDelegate.swift in Sources */,
+				757A1455246310980032F966 /* SignInViewController.swift in Sources */,
+				757A145B2463117B0032F966 /* ResultSearchViewController.swift in Sources */,
 				757A143D24623F9A0032F966 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
