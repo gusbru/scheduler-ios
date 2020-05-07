@@ -23,6 +23,9 @@
 		75945C8824647589006E956D /* TermRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75945C8724647589006E956D /* TermRequest.swift */; };
 		75945C8A246480E3006E956D /* SubjectDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75945C89246480E3006E956D /* SubjectDataSource.swift */; };
 		75945C8C24648D6C006E956D /* SubjectResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75945C8B24648D6C006E956D /* SubjectResponse.swift */; };
+		75945C8E2464BFB4006E956D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75945C8D2464BFB4006E956D /* MainViewController.swift */; };
+		75945C902464C4F6006E956D /* CheckTokenRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75945C8F2464C4F6006E956D /* CheckTokenRequest.swift */; };
+		75945C922464C626006E956D /* CheckTokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75945C912464C626006E956D /* CheckTokenResponse.swift */; };
 		75AAA5DC24636F31007FEED4 /* SchedulerClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AAA5DB24636F31007FEED4 /* SchedulerClient.swift */; };
 		75AAA5E024637836007FEED4 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AAA5DF24637836007FEED4 /* ErrorResponse.swift */; };
 		75AAA5E22463793E007FEED4 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AAA5E12463793E007FEED4 /* LoginRequest.swift */; };
@@ -50,6 +53,9 @@
 		75945C8724647589006E956D /* TermRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermRequest.swift; sourceTree = "<group>"; };
 		75945C89246480E3006E956D /* SubjectDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectDataSource.swift; sourceTree = "<group>"; };
 		75945C8B24648D6C006E956D /* SubjectResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectResponse.swift; sourceTree = "<group>"; };
+		75945C8D2464BFB4006E956D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		75945C8F2464C4F6006E956D /* CheckTokenRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckTokenRequest.swift; sourceTree = "<group>"; };
+		75945C912464C626006E956D /* CheckTokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckTokenResponse.swift; sourceTree = "<group>"; };
 		75AAA5DB24636F31007FEED4 /* SchedulerClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulerClient.swift; sourceTree = "<group>"; };
 		75AAA5DF24637836007FEED4 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 		75AAA5E12463793E007FEED4 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
@@ -119,6 +125,7 @@
 				757A145C24631E270032F966 /* MainTabBarViewController.swift */,
 				75945C85246471D3006E956D /* TermDataSource.swift */,
 				75945C89246480E3006E956D /* SubjectDataSource.swift */,
+				75945C8D2464BFB4006E956D /* MainViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -148,6 +155,7 @@
 				75AAA5DF24637836007FEED4 /* ErrorResponse.swift */,
 				75AAA5E32463797F007FEED4 /* LoginResponse.swift */,
 				75AAA5E724637B8E007FEED4 /* SignInResponse.swift */,
+				75945C912464C626006E956D /* CheckTokenResponse.swift */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -159,6 +167,7 @@
 				75AAA5E524637B47007FEED4 /* File.swift */,
 				75945C8724647589006E956D /* TermRequest.swift */,
 				75945C8B24648D6C006E956D /* SubjectResponse.swift */,
+				75945C8F2464C4F6006E956D /* CheckTokenRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -239,9 +248,11 @@
 				75945C86246471D3006E956D /* TermDataSource.swift in Sources */,
 				75945C8A246480E3006E956D /* SubjectDataSource.swift in Sources */,
 				757A143F24623F9A0032F966 /* LoginViewController.swift in Sources */,
+				75945C902464C4F6006E956D /* CheckTokenRequest.swift in Sources */,
 				75AAA5E824637B8E007FEED4 /* SignInResponse.swift in Sources */,
 				75AAA5E22463793E007FEED4 /* LoginRequest.swift in Sources */,
 				757A145D24631E270032F966 /* MainTabBarViewController.swift in Sources */,
+				75945C922464C626006E956D /* CheckTokenResponse.swift in Sources */,
 				75945C8C24648D6C006E956D /* SubjectResponse.swift in Sources */,
 				75AAA5DC24636F31007FEED4 /* SchedulerClient.swift in Sources */,
 				75AAA5E42463797F007FEED4 /* LoginResponse.swift in Sources */,
@@ -253,6 +264,7 @@
 				75AAA5E024637836007FEED4 /* ErrorResponse.swift in Sources */,
 				757A145B2463117B0032F966 /* ResultSearchViewController.swift in Sources */,
 				757A143D24623F9A0032F966 /* SceneDelegate.swift in Sources */,
+				75945C8E2464BFB4006E956D /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -21,6 +21,7 @@ class SchedulerClient {
         case getTerm
         case login
         case signIn
+        case checkToken
         case getSubject(term: String)
         case getList(subject: String, term: String)
         
@@ -32,6 +33,8 @@ class SchedulerClient {
                 return "\(Endpoints.base)/api/user/authenticate"
             case .signIn:
                 return "\(Endpoints.base)/api/user/register"
+            case .checkToken:
+                return "\(Endpoints.base)/api/user/checkToken"
             case .getSubject(term: let term):
                 return "\(Endpoints.base)/api/classes/subjectbyterm?term=\(term)"
             case .getList(subject: let subject, term: let term):
@@ -75,16 +78,14 @@ class SchedulerClient {
     class func login(email: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
         let userInfo = LoginRequest(email: email, password: password)
         
-        
-        
         taskForPOSTRequest(url: Endpoints.login.url, body: userInfo, reponseType: LoginResponse.self) { (response, error) in
             if let response = response {
-                Auth.token = response.token
-                Auth.email = email
+                self.setupUserInfo(email: nil, token: response.token)
                 completion(true, nil)
             }
             
             if let error = error {
+                self.clearUserInfo()
                 completion(false, error)
             }
         }
@@ -95,18 +96,55 @@ class SchedulerClient {
         
         taskForPOSTRequest(url: Endpoints.signIn.url, body: newUserInfo, reponseType: SignInResponse.self) { (response, error) in
             if let response = response {
-                Auth.token = response.token
-                Auth.email = response.email
+                self.setupUserInfo(email: response.email, token: response.token)
                 completion(true, nil)
             }
             
             if let error = error {
+                self.clearUserInfo()
                 completion(false, error)
             }
         }
     }
     
+    class func checkToken(token: String, completion: @escaping (Bool, Error?) -> Void) {
+        let tokenObject = CheckTokenRequest(token: token)
+        
+        taskForPOSTRequest(url: Endpoints.checkToken.url, body: tokenObject, reponseType: CheckTokenResponse.self) { (response, error) in
+            if let response = response {
+                self.setupUserInfo(email: response.email, token: token)
+                completion(true, nil)
+            }
+            
+            if let error = error {
+                self.clearUserInfo()
+                completion(false, error)
+            }
+        }
+    }
     
+    // MARK: - Helper functions
+    
+    private class func setupUserInfo(email: String?, token: String?) {
+        
+        if let token = token {
+            Auth.token = token
+            UserDefaults.standard.set(token, forKey: "token")
+        }
+        
+        if let email = email {
+            Auth.email = email
+            UserDefaults.standard.set(email, forKey: "email")
+        }
+        
+    }
+    
+    private class func clearUserInfo() {
+        Auth.token = ""
+        Auth.email = ""
+        UserDefaults.standard.set("", forKey: "email")
+        UserDefaults.standard.set("", forKey: "token")
+    }
     
     
     
