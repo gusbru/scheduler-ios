@@ -19,6 +19,8 @@
 		757A1459246310D90032F966 /* SavedSchedulesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757A1458246310D90032F966 /* SavedSchedulesViewController.swift */; };
 		757A145B2463117B0032F966 /* ResultSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757A145A2463117B0032F966 /* ResultSearchViewController.swift */; };
 		757A145D24631E270032F966 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757A145C24631E270032F966 /* MainTabBarViewController.swift */; };
+		75945C86246471D3006E956D /* TermDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75945C85246471D3006E956D /* TermDataSource.swift */; };
+		75945C8824647589006E956D /* TermRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75945C8724647589006E956D /* TermRequest.swift */; };
 		75AAA5DC24636F31007FEED4 /* SchedulerClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AAA5DB24636F31007FEED4 /* SchedulerClient.swift */; };
 		75AAA5E024637836007FEED4 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AAA5DF24637836007FEED4 /* ErrorResponse.swift */; };
 		75AAA5E22463793E007FEED4 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AAA5E12463793E007FEED4 /* LoginRequest.swift */; };
@@ -42,6 +44,8 @@
 		757A1458246310D90032F966 /* SavedSchedulesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedSchedulesViewController.swift; sourceTree = "<group>"; };
 		757A145A2463117B0032F966 /* ResultSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultSearchViewController.swift; sourceTree = "<group>"; };
 		757A145C24631E270032F966 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
+		75945C85246471D3006E956D /* TermDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermDataSource.swift; sourceTree = "<group>"; };
+		75945C8724647589006E956D /* TermRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermRequest.swift; sourceTree = "<group>"; };
 		75AAA5DB24636F31007FEED4 /* SchedulerClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulerClient.swift; sourceTree = "<group>"; };
 		75AAA5DF24637836007FEED4 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 		75AAA5E12463793E007FEED4 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
@@ -109,6 +113,7 @@
 				757A1458246310D90032F966 /* SavedSchedulesViewController.swift */,
 				757A145A2463117B0032F966 /* ResultSearchViewController.swift */,
 				757A145C24631E270032F966 /* MainTabBarViewController.swift */,
+				75945C85246471D3006E956D /* TermDataSource.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -147,6 +152,7 @@
 			children = (
 				75AAA5E12463793E007FEED4 /* LoginRequest.swift */,
 				75AAA5E524637B47007FEED4 /* File.swift */,
+				75945C8724647589006E956D /* TermRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -224,6 +230,7 @@
 			files = (
 				757A1457246310CA0032F966 /* SearchViewController.swift in Sources */,
 				757A1459246310D90032F966 /* SavedSchedulesViewController.swift in Sources */,
+				75945C86246471D3006E956D /* TermDataSource.swift in Sources */,
 				757A143F24623F9A0032F966 /* LoginViewController.swift in Sources */,
 				75AAA5E824637B8E007FEED4 /* SignInResponse.swift in Sources */,
 				75AAA5E22463793E007FEED4 /* LoginRequest.swift in Sources */,
@@ -232,6 +239,7 @@
 				75AAA5E42463797F007FEED4 /* LoginResponse.swift in Sources */,
 				757A144524623F9A0032F966 /* Scheduler.xcdatamodeld in Sources */,
 				757A143B24623F9A0032F966 /* AppDelegate.swift in Sources */,
+				75945C8824647589006E956D /* TermRequest.swift in Sources */,
 				75AAA5E624637B47007FEED4 /* File.swift in Sources */,
 				757A1455246310980032F966 /* SignInViewController.swift in Sources */,
 				75AAA5E024637836007FEED4 /* ErrorResponse.swift in Sources */,

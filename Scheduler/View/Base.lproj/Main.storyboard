@@ -166,8 +166,11 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aiJ-fO-fHf">
                                 <rect key="frame" x="20" y="763" width="374" height="30"/>
                                 <state key="normal" title="Search"/>
+                                <connections>
+                                    <action selector="search:" destination="G6Y-DW-iU2" eventType="touchUpInside" id="8Kx-rH-jNG"/>
+                                </connections>
                             </button>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="l0W-b4-494">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="l0W-b4-494">
                                 <rect key="frame" x="197" y="649" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
@@ -195,6 +198,12 @@
                         <viewLayoutGuide key="safeArea" id="ykP-L3-IuL"/>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="search" id="7aC-Iu-s61"/>
+                    <connections>
+                        <outlet property="loadingSpinner" destination="l0W-b4-494" id="30U-EY-3dA"/>
+                        <outlet property="searchButton" destination="aiJ-fO-fHf" id="6a8-SE-8KW"/>
+                        <outlet property="subjectPickerView" destination="cha-xK-r11" id="BOA-kw-Jkz"/>
+                        <outlet property="termPickerView" destination="xnp-Xc-fH6" id="eTY-3N-bwH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r7S-41-8ZT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

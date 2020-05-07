@@ -10,21 +10,52 @@ import UIKit
 
 class SearchViewController: UIViewController {
 
+    @IBOutlet weak var termPickerView: UIPickerView!
+    @IBOutlet weak var subjectPickerView: UIPickerView!
+    @IBOutlet weak var loadingSpinner: UIActivityIndicatorView!
+    @IBOutlet weak var searchButton: UIButton!
+    
+    var termDataSource = TermDataSource()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        termPickerView.dataSource = termDataSource
+        termPickerView.delegate = termDataSource
+//        subjectPickerView.dataSource = self
+//        subjectPickerView.delegate = self
+        
+        loadingSpinner.startAnimating()
+        
+        SchedulerClient.getTerms { (response, error) in
+            if let error = error {
+                self.loadingSpinner.stopAnimating()
+                self.displayAlert(message: error.localizedDescription)
+                return
+            }
+            
+            for term in response {
+                self.termDataSource.termsList.append(term.termName)
+            }
+            self.termPickerView.reloadAllComponents()
+            self.loadingSpinner.stopAnimating()
+        }
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func search(_ sender: Any) {
     }
-    */
-
+    
+    // MARK:- Alert
+    
+    private func displayAlert(message: String) {
+        let alertView = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        alertView.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alertView, animated: true, completion: nil)
+    }
+    
 }
+
+

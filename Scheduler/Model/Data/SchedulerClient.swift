@@ -46,6 +46,18 @@ class SchedulerClient {
     
     
     // MARK:- GET requests
+    class func getTerms(completion: @escaping ([TermsRequest], Error?) -> Void) {
+        taskForGETRequest(url: Endpoints.getTerm.url, ResponseType: [TermsRequest].self) { (response, error) in
+            if let response = response {
+                print(response)
+                completion(response, nil)
+            }
+            
+            if let error = error {
+                completion([], error)
+            }
+        }
+    }
     
     // MARK:- POST requests
     
@@ -82,6 +94,8 @@ class SchedulerClient {
             }
         }
     }
+    
+    
     
     
     
