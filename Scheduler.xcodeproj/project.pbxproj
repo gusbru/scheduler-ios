@@ -22,6 +22,7 @@
 		75945C86246471D3006E956D /* TermDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75945C85246471D3006E956D /* TermDataSource.swift */; };
 		75945C8824647589006E956D /* TermRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75945C8724647589006E956D /* TermRequest.swift */; };
 		75945C8A246480E3006E956D /* SubjectDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75945C89246480E3006E956D /* SubjectDataSource.swift */; };
+		75945C8C24648D6C006E956D /* SubjectResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75945C8B24648D6C006E956D /* SubjectResponse.swift */; };
 		75AAA5DC24636F31007FEED4 /* SchedulerClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AAA5DB24636F31007FEED4 /* SchedulerClient.swift */; };
 		75AAA5E024637836007FEED4 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AAA5DF24637836007FEED4 /* ErrorResponse.swift */; };
 		75AAA5E22463793E007FEED4 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AAA5E12463793E007FEED4 /* LoginRequest.swift */; };
@@ -48,6 +49,7 @@
 		75945C85246471D3006E956D /* TermDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermDataSource.swift; sourceTree = "<group>"; };
 		75945C8724647589006E956D /* TermRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermRequest.swift; sourceTree = "<group>"; };
 		75945C89246480E3006E956D /* SubjectDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectDataSource.swift; sourceTree = "<group>"; };
+		75945C8B24648D6C006E956D /* SubjectResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectResponse.swift; sourceTree = "<group>"; };
 		75AAA5DB24636F31007FEED4 /* SchedulerClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulerClient.swift; sourceTree = "<group>"; };
 		75AAA5DF24637836007FEED4 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 		75AAA5E12463793E007FEED4 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				75AAA5E12463793E007FEED4 /* LoginRequest.swift */,
 				75AAA5E524637B47007FEED4 /* File.swift */,
 				75945C8724647589006E956D /* TermRequest.swift */,
+				75945C8B24648D6C006E956D /* SubjectResponse.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 				75AAA5E824637B8E007FEED4 /* SignInResponse.swift in Sources */,
 				75AAA5E22463793E007FEED4 /* LoginRequest.swift in Sources */,
 				757A145D24631E270032F966 /* MainTabBarViewController.swift in Sources */,
+				75945C8C24648D6C006E956D /* SubjectResponse.swift in Sources */,
 				75AAA5DC24636F31007FEED4 /* SchedulerClient.swift in Sources */,
 				75AAA5E42463797F007FEED4 /* LoginResponse.swift in Sources */,
 				757A144524623F9A0032F966 /* Scheduler.xcdatamodeld in Sources */,

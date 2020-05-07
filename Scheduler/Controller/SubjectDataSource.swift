@@ -43,7 +43,29 @@ class SubjectDataSource: NSObject, UIPickerViewDataSource, UIPickerViewDelegate 
         guard let data = notification.userInfo as? [String: String] else { return }
         
         if let selectedTerm = data["selectedTerm"] {
+            
+            print("Selected term = \(selectedTerm)")
+            if (selectedTerm == "Select a Term") { return }
+            
+            // send notification - start load subjects
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "startGetSubjects"), object: nil)
+            
+            SchedulerClient.getSubject(term: selectedTerm) { (response, error) in
+                if let error = error {
+                    print(error)
+                    // TODO: send notification to SearchViewController to display the error
+                }
+
+                for subject in response {
+                    self.subjectList.append(subject.name)
+                }
+
+                // send notification - end loading
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "endGetSubjects"), object: nil)
+            }
+            
             print("get subjects from \(selectedTerm)")
+            print(subjectList)
         }
     }
     

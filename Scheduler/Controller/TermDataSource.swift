@@ -27,7 +27,7 @@ class TermDataSource: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedTerm = termsList[row]
-        print("send notification")
+        
         NotificationCenter.default.post(name: NSNotification.Name("term selected"), object: nil, userInfo: ["selectedTerm": selectedTerm])
     }
 }

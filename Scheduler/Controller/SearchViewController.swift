@@ -28,8 +28,11 @@ class SearchViewController: UIViewController {
         subjectPickerView.dataSource = subjectDataSource
         subjectPickerView.delegate = subjectDataSource
         
-        loadingSpinner.startAnimating()
+        // subscribe notifications
+        NotificationCenter.default.addObserver(self, selector: #selector(startLoadSubjects), name: NSNotification.Name(rawValue: "startGetSubjects"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(endLoadingSubjects), name: NSNotification.Name(rawValue: "endGetSubjects"), object: nil)
         
+        loadingSpinner.startAnimating()
         SchedulerClient.getTerms { (response, error) in
             if let error = error {
                 self.loadingSpinner.stopAnimating()
@@ -46,6 +49,12 @@ class SearchViewController: UIViewController {
         }
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "startGetSubjects"), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "endGetSubjects"), object: nil)
+    }
+    
 
     @IBAction func search(_ sender: Any) {
     }
@@ -60,6 +69,18 @@ class SearchViewController: UIViewController {
         self.present(alertView, animated: true, completion: nil)
     }
     
+    // MARK: - Handle Notifications
+    
+    @objc func startLoadSubjects() {
+        loadingSpinner.startAnimating()
+        termPickerView.isUserInteractionEnabled = false
+        termPickerView.alpha = 0.5
+    }
+    
+    @objc func endLoadingSubjects() {
+        loadingSpinner.stopAnimating()
+        subjectPickerView.reloadAllComponents()
+    }
 }
 
 

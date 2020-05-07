@@ -21,7 +21,7 @@ class SchedulerClient {
         case getTerm
         case login
         case signIn
-        case getSubject
+        case getSubject(term: String)
         case getList(subject: String, term: String)
         
         var stringVaue: String {
@@ -32,8 +32,8 @@ class SchedulerClient {
                 return "\(Endpoints.base)/api/user/authenticate"
             case .signIn:
                 return "\(Endpoints.base)/api/user/register"
-            case .getSubject:
-                return "\(Endpoints.base)/api/classes/subject"
+            case .getSubject(term: let term):
+                return "\(Endpoints.base)/api/classes/subjectbyterm?term=\(term)"
             case .getList(subject: let subject, term: let term):
                 return "\(Endpoints.base)/api/classes/subjectCourse?subject=\(subject)&term=\(term)"
             }
@@ -49,7 +49,18 @@ class SchedulerClient {
     class func getTerms(completion: @escaping ([TermsRequest], Error?) -> Void) {
         taskForGETRequest(url: Endpoints.getTerm.url, ResponseType: [TermsRequest].self) { (response, error) in
             if let response = response {
-                print(response)
+                completion(response, nil)
+            }
+            
+            if let error = error {
+                completion([], error)
+            }
+        }
+    }
+    
+    class func getSubject(term: String, completion: @escaping ([SubjectResponse], Error?) -> Void) {
+        taskForGETRequest(url: Endpoints.getSubject(term: term).url, ResponseType: [SubjectResponse].self) { (response, error) in
+            if let response = response {
                 completion(response, nil)
             }
             
