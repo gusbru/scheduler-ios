@@ -16,6 +16,7 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var searchButton: UIButton!
     
     var termDataSource = TermDataSource()
+    var subjectDataSource = SubjectDataSource()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,8 +25,8 @@ class SearchViewController: UIViewController {
         
         termPickerView.dataSource = termDataSource
         termPickerView.delegate = termDataSource
-//        subjectPickerView.dataSource = self
-//        subjectPickerView.delegate = self
+        subjectPickerView.dataSource = subjectDataSource
+        subjectPickerView.delegate = subjectDataSource
         
         loadingSpinner.startAnimating()
         
@@ -35,6 +36,7 @@ class SearchViewController: UIViewController {
                 self.displayAlert(message: error.localizedDescription)
                 return
             }
+            
             
             for term in response {
                 self.termDataSource.termsList.append(term.termName)
@@ -47,6 +49,8 @@ class SearchViewController: UIViewController {
 
     @IBAction func search(_ sender: Any) {
     }
+    
+    
     
     // MARK:- Alert
     

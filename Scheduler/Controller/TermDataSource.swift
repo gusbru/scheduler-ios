@@ -10,7 +10,8 @@ import UIKit
 
 class TermDataSource: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
     
-    var termsList: [String] = []
+    var termsList: [String] = ["Select a Term"]
+    var selectedTerm: String = ""
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -25,6 +26,8 @@ class TermDataSource: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        print("make a request for \(termsList[row])")
+        selectedTerm = termsList[row]
+        print("send notification")
+        NotificationCenter.default.post(name: NSNotification.Name("term selected"), object: nil, userInfo: ["selectedTerm": selectedTerm])
     }
 }
