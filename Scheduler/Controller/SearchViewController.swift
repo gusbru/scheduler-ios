@@ -9,6 +9,9 @@
 import UIKit
 
 class SearchViewController: UIViewController {
+    
+    var selectedTerm: String?
+    var selectedSubject: String?
 
     @IBOutlet weak var termPickerView: UIPickerView!
     @IBOutlet weak var subjectPickerView: UIPickerView!
@@ -34,6 +37,11 @@ class SearchViewController: UIViewController {
         // subscribe notifications
         NotificationCenter.default.addObserver(self, selector: #selector(startLoadSubjects), name: NSNotification.Name(rawValue: "startGetSubjects"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(endLoadingSubjects), name: NSNotification.Name(rawValue: "endGetSubjects"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleSelectedSubject(_:)), name: NSNotification.Name(rawValue: "subjectSelected"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleSelectedTerm(_:)), name: NSNotification.Name(rawValue: "term selected"), object: nil)
+        
+        // disable search button
+        searchButton.isEnabled = false
         
         loadingSpinner.startAnimating()
         SchedulerClient.getTerms { (response, error) in
@@ -61,10 +69,20 @@ class SearchViewController: UIViewController {
         super.viewDidDisappear(animated)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "startGetSubjects"), object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "endGetSubjects"), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "subjectSelected"), object: nil)
     }
     
 
     @IBAction func search(_ sender: Any) {
+        guard let selectedTerm = selectedTerm else { return }
+        guard let selectedSubject = selectedSubject else { return }
+        
+        let resultSearchViewController = storyboard?.instantiateViewController(identifier: "ResultSearch") as! ResultSearchViewController
+        resultSearchViewController.term = selectedTerm
+        resultSearchViewController.subject = selectedSubject
+        
+        navigationController?.pushViewController(resultSearchViewController, animated: true)
+        
     }
     
     @IBAction func clear(_ sender: Any) {
@@ -96,6 +114,28 @@ class SearchViewController: UIViewController {
     @objc func endLoadingSubjects() {
         loadingSpinner.stopAnimating()
         subjectPickerView.reloadAllComponents()
+    }
+    
+    @objc func handleSelectedTerm(_ notification: Notification) {
+        guard let userInfo = notification.userInfo else { return }
+        
+        if let selectedTerm = userInfo["selectedTerm"] {
+            self.selectedTerm = selectedTerm as? String
+        }
+        
+    }
+    
+    @objc func handleSelectedSubject(_ notification: Notification) {
+        guard let userInfo = notification.userInfo else { return }
+        
+        if let selectedSubject = userInfo["selectedSubject"] {
+            self.selectedSubject = selectedSubject as? String
+        }
+        
+        if self.selectedTerm != nil && self.selectedSubject != nil {
+            searchButton.isEnabled = true
+        }
+        
     }
     
     private func cleanViewStack() {

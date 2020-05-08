@@ -36,8 +36,11 @@ class SubjectDataSource: NSObject, UIPickerViewDataSource, UIPickerViewDelegate 
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedSubject = subjectList[row]
+        NotificationCenter.default.post(name: NSNotification.Name("subjectSelected"), object: nil, userInfo: ["selectedSubject": selectedSubject])
     }
     
+    
+    // MARK:- Data
     @objc func onDidReceiveData(_ notification: Notification) {
         
         guard let data = notification.userInfo as? [String: String] else { return }
@@ -55,7 +58,8 @@ class SubjectDataSource: NSObject, UIPickerViewDataSource, UIPickerViewDelegate 
                     print(error)
                     // TODO: send notification to SearchViewController to display the error
                 }
-
+                
+                self.subjectList.removeAll()
                 for subject in response {
                     self.subjectList.append(subject.name)
                 }

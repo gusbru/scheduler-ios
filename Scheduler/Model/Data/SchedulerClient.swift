@@ -77,6 +77,18 @@ class SchedulerClient {
         }
     }
     
+    class func getList(term: String, subject: String, completion: @escaping ([ListResponse], Error?) -> Void) {
+        taskForGETRequest(url: Endpoints.getList(subject: subject, term: term).url, ResponseType: [ListResponse].self) { (response, error) in
+            if let response = response {
+                completion(response, nil)
+            }
+            
+            if let error = error {
+                completion([], error)
+            }
+        }
+    }
+    
     // MARK:- POST requests
     
     class func login(email: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
