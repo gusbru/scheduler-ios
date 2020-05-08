@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import CoreData
 
 class LoginViewController: UIViewController {
+    
+    var dataController: NSPersistentContainer!
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -86,11 +89,13 @@ class LoginViewController: UIViewController {
     
     private func handleLoginSuccess() {
         let mainTabBarController = storyboard?.instantiateViewController(identifier: "MainTabBar") as! MainTabBarViewController
+        mainTabBarController.dataController = dataController
         navigationController?.pushViewController(mainTabBarController, animated: true)
     }
     
     private func handleSignIn() {
         let signInViewController = storyboard?.instantiateViewController(identifier: "SignIn") as! SignInViewController
+        signInViewController.dataController = dataController
         navigationController?.pushViewController(signInViewController, animated: true)
     }
 }

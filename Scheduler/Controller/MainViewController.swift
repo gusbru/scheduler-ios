@@ -55,11 +55,13 @@ class MainViewController: UIViewController {
     
     func goToLogin() {
         let loginViewController = storyboard?.instantiateViewController(identifier: "Login") as! LoginViewController
+        loginViewController.dataController = dataController
         navigationController?.pushViewController(loginViewController, animated: true)
     }
     
     func goToSearch() {
         let mainTabBarController = storyboard?.instantiateViewController(identifier: "MainTabBar") as! MainTabBarViewController
+        mainTabBarController.dataController = dataController
         navigationController?.pushViewController(mainTabBarController, animated: true)
     }
     

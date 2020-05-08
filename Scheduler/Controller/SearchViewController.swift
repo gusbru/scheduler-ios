@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import CoreData
 
 class SearchViewController: UIViewController {
     
     var selectedTerm: String?
     var selectedSubject: String?
+    var dataController: NSPersistentContainer?
+    var fetchResultsController: NSFetchedResultsController<CourseSection>!
 
     @IBOutlet weak var termPickerView: UIPickerView!
     @IBOutlet weak var subjectPickerView: UIPickerView!
@@ -42,6 +45,9 @@ class SearchViewController: UIViewController {
         
         // disable search button
         searchButton.isEnabled = false
+        
+        // setup data persistance
+        setupDataPersistance()
         
         loadingSpinner.startAnimating()
         SchedulerClient.getTerms { (response, error) in
@@ -144,6 +150,43 @@ class SearchViewController: UIViewController {
         navigationArray.remove(at: navigationArray.count - 2) // To remove previous UIViewController
         self.navigationController?.viewControllers = navigationArray
     }
+    
+    private func setupDataPersistance() {
+        let dataController = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
+        self.dataController = dataController
+        
+        let fetchRequest: NSFetchRequest<CourseSection> = CourseSection.fetchRequest()
+        let sortDescriptor = NSSortDescriptor(key: "id", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        fetchResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        
+        fetchResultsController.delegate = self
+        
+        do {
+            try fetchResultsController.performFetch()
+        } catch {
+            fatalError("Cannot fetch subjects \(error.localizedDescription)")
+        }
+        
+    }
 }
 
-
+extension SearchViewController: NSFetchedResultsControllerDelegate {
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+        case .insert:
+            break
+        default:
+            break
+        }
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        
+    }
+}
