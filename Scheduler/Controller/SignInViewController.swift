@@ -7,11 +7,8 @@
 //
 
 import UIKit
-import CoreData
 
 class SignInViewController: UIViewController {
-    
-    var dataController: NSPersistentContainer!
 
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!

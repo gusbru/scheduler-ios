@@ -46,8 +46,8 @@ class SearchViewController: UIViewController {
         // disable search button
         searchButton.isEnabled = false
         
-        // setup data persistance
-        setupDataPersistance()
+        // setup data persistence
+        setupDataPersistence()
         
         loadingSpinner.startAnimating()
         SchedulerClient.getTerms { (response, error) in
@@ -151,7 +151,7 @@ class SearchViewController: UIViewController {
         self.navigationController?.viewControllers = navigationArray
     }
     
-    private func setupDataPersistance() {
+    private func setupDataPersistence() {
         let dataController = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
         self.dataController = dataController
         

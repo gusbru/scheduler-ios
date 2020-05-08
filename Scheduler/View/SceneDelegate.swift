@@ -20,10 +20,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let _ = (scene as? UIWindowScene) else { return }
         
         // Data persistance
-        let dataController = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
-        let navigationController = window?.rootViewController as! UINavigationController
-        let mainViewController = navigationController.topViewController as! MainViewController
-        mainViewController.dataController = dataController
+//        let dataController = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
+//        let navigationController = window?.rootViewController as! UINavigationController
+//        let mainViewController = navigationController.topViewController as! MainViewController
+//        mainViewController.dataController = dataController
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
