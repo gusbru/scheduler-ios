@@ -34,23 +34,34 @@ class MainViewController: UIViewController {
             // check if token is valid
             SchedulerClient.checkToken(token: token) { (success, error) in
                 if success {
-                    let mainTabBarController = self.storyboard?.instantiateViewController(identifier: "MainTabBar") as! MainTabBarViewController
-                    self.navigationController?.pushViewController(mainTabBarController, animated: true)
+                    self.goToSearch()
+                }
+                
+                if error != nil {
+                    self.goToLogin()
                 }
             }
-            return
+            
+        } else {
+            // Token not valid or not present
+            sleep(1)
+            goToLogin()
         }
         
-        // Token not valid or not present
-        sleep(1)
-        let loginViewController = storyboard?.instantiateViewController(identifier: "Login") as! LoginViewController
-        navigationController?.pushViewController(loginViewController, animated: true)
+        
         
     }
     
     
+    func goToLogin() {
+        let loginViewController = storyboard?.instantiateViewController(identifier: "Login") as! LoginViewController
+        navigationController?.pushViewController(loginViewController, animated: true)
+    }
     
-
+    func goToSearch() {
+        let mainTabBarController = storyboard?.instantiateViewController(identifier: "MainTabBar") as! MainTabBarViewController
+        navigationController?.pushViewController(mainTabBarController, animated: true)
+    }
     
 
 }

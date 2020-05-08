@@ -173,17 +173,35 @@
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="l0W-b4-494">
                                 <rect key="frame" x="197" y="649" width="20" height="20"/>
                             </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pU2-Dc-TTR">
+                                <rect key="frame" x="20" y="49" width="48" height="30"/>
+                                <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="logout:" destination="G6Y-DW-iU2" eventType="touchUpInside" id="qab-7o-NVO"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LTg-EY-MJd">
+                                <rect key="frame" x="353" y="49" width="36" height="30"/>
+                                <state key="normal" title="Clear"/>
+                                <connections>
+                                    <action selector="clear:" destination="G6Y-DW-iU2" eventType="touchUpInside" id="OQ1-H1-Ucm"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="ykP-L3-IuL" firstAttribute="trailing" secondItem="aiJ-fO-fHf" secondAttribute="trailing" constant="20" id="30t-um-6Sn"/>
+                            <constraint firstItem="LTg-EY-MJd" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="pU2-Dc-TTR" secondAttribute="trailing" constant="8" symbolic="YES" id="7TS-Ml-Rec"/>
                             <constraint firstItem="ykP-L3-IuL" firstAttribute="trailing" secondItem="Vkv-k1-mxB" secondAttribute="trailing" id="ED4-YJ-wjx"/>
                             <constraint firstItem="xnp-Xc-fH6" firstAttribute="leading" secondItem="ykP-L3-IuL" secondAttribute="leading" id="G12-FU-XZQ"/>
+                            <constraint firstItem="pU2-Dc-TTR" firstAttribute="leading" secondItem="ykP-L3-IuL" secondAttribute="leading" constant="20" id="G5L-1L-LSV"/>
                             <constraint firstItem="aiJ-fO-fHf" firstAttribute="leading" secondItem="ykP-L3-IuL" secondAttribute="leading" constant="20" id="M4F-Yw-LtE"/>
                             <constraint firstItem="d2J-Kb-SWp" firstAttribute="leading" secondItem="ykP-L3-IuL" secondAttribute="leading" id="TLP-GJ-qDk"/>
+                            <constraint firstItem="ykP-L3-IuL" firstAttribute="trailing" secondItem="LTg-EY-MJd" secondAttribute="trailing" constant="25" id="Uj0-Kb-D9u"/>
                             <constraint firstItem="ykP-L3-IuL" firstAttribute="bottom" secondItem="aiJ-fO-fHf" secondAttribute="bottom" constant="20" id="Y5V-Vx-1TL"/>
                             <constraint firstItem="aiJ-fO-fHf" firstAttribute="top" secondItem="l0W-b4-494" secondAttribute="bottom" constant="94" id="ZyH-Xv-pih"/>
                             <constraint firstItem="cha-xK-r11" firstAttribute="trailing" secondItem="ykP-L3-IuL" secondAttribute="trailing" id="dFr-hY-5Uu"/>
+                            <constraint firstItem="LTg-EY-MJd" firstAttribute="top" secondItem="ykP-L3-IuL" secondAttribute="top" constant="5" id="fF4-hB-GlH"/>
                             <constraint firstItem="cha-xK-r11" firstAttribute="top" secondItem="d2J-Kb-SWp" secondAttribute="bottom" id="hj6-KO-EzT"/>
                             <constraint firstItem="ykP-L3-IuL" firstAttribute="trailing" secondItem="d2J-Kb-SWp" secondAttribute="trailing" id="jq7-nk-pTF"/>
                             <constraint firstItem="l0W-b4-494" firstAttribute="leading" secondItem="ykP-L3-IuL" secondAttribute="leading" constant="197" id="k86-JU-WO2"/>
@@ -194,12 +212,15 @@
                             <constraint firstItem="cha-xK-r11" firstAttribute="leading" secondItem="ykP-L3-IuL" secondAttribute="leading" id="rRF-Ic-7dD"/>
                             <constraint firstItem="xnp-Xc-fH6" firstAttribute="trailing" secondItem="ykP-L3-IuL" secondAttribute="trailing" id="wjg-vd-1ic"/>
                             <constraint firstItem="xnp-Xc-fH6" firstAttribute="top" secondItem="Vkv-k1-mxB" secondAttribute="bottom" id="y1r-yg-ko2"/>
+                            <constraint firstItem="pU2-Dc-TTR" firstAttribute="top" secondItem="ykP-L3-IuL" secondAttribute="top" constant="5" id="yym-M2-7qq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ykP-L3-IuL"/>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="search" id="7aC-Iu-s61"/>
                     <connections>
+                        <outlet property="clearButton" destination="LTg-EY-MJd" id="pgY-iF-X4J"/>
                         <outlet property="loadingSpinner" destination="l0W-b4-494" id="30U-EY-3dA"/>
+                        <outlet property="logoutButton" destination="pU2-Dc-TTR" id="JGo-L3-EaH"/>
                         <outlet property="searchButton" destination="aiJ-fO-fHf" id="6a8-SE-8KW"/>
                         <outlet property="subjectPickerView" destination="cha-xK-r11" id="BOA-kw-Jkz"/>
                         <outlet property="termPickerView" destination="xnp-Xc-fH6" id="eTY-3N-bwH"/>

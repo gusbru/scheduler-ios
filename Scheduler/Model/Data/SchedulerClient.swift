@@ -143,7 +143,7 @@ class SchedulerClient {
         
     }
     
-    private class func clearUserInfo() {
+    class func clearUserInfo() {
         Auth.token = ""
         Auth.email = ""
         UserDefaults.standard.set("", forKey: "email")

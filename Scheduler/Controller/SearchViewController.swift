@@ -14,6 +14,8 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var subjectPickerView: UIPickerView!
     @IBOutlet weak var loadingSpinner: UIActivityIndicatorView!
     @IBOutlet weak var searchButton: UIButton!
+    @IBOutlet weak var logoutButton: UIButton!
+    @IBOutlet weak var clearButton: UIButton!
     
     var termDataSource = TermDataSource()
     var subjectDataSource = SubjectDataSource()
@@ -65,6 +67,14 @@ class SearchViewController: UIViewController {
     @IBAction func search(_ sender: Any) {
     }
     
+    @IBAction func clear(_ sender: Any) {
+    }
+    
+    @IBAction func logout(_ sender: Any) {
+        SchedulerClient.clearUserInfo()
+        let loginViewController = storyboard?.instantiateViewController(identifier: "Login") as! LoginViewController
+        navigationController?.pushViewController(loginViewController, animated: true)
+    }
     
     
     // MARK:- Alert
