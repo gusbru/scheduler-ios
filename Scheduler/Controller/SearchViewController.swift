@@ -22,6 +22,7 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        cleanViewStack()
         
         termPickerView.dataSource = termDataSource
         termPickerView.delegate = termDataSource
@@ -85,6 +86,13 @@ class SearchViewController: UIViewController {
     @objc func endLoadingSubjects() {
         loadingSpinner.stopAnimating()
         subjectPickerView.reloadAllComponents()
+    }
+    
+    private func cleanViewStack() {
+        guard let navigationController = self.navigationController else { return }
+        var navigationArray = navigationController.viewControllers // To get all UIViewController stack as Array
+        navigationArray.remove(at: navigationArray.count - 2) // To remove previous UIViewController
+        self.navigationController?.viewControllers = navigationArray
     }
 }
 

@@ -36,9 +36,13 @@ class SchedulerClient {
             case .checkToken:
                 return "\(Endpoints.base)/api/user/checkToken"
             case .getSubject(term: let term):
-                return "\(Endpoints.base)/api/classes/subjectbyterm?term=\(term)"
+                let originalString = "\(Endpoints.base)/api/classes/subjectbyterm?term=\(term)"
+                let urlString = originalString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+                return urlString!
             case .getList(subject: let subject, term: let term):
-                return "\(Endpoints.base)/api/classes/subjectCourse?subject=\(subject)&term=\(term)"
+                let originalString = "\(Endpoints.base)/api/classes/subjectCourse?subject=\(subject)&term=\(term)"
+                let urlString = originalString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+                return urlString!
             }
         }
         
