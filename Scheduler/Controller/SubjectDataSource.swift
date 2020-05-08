@@ -10,7 +10,7 @@ import UIKit
 
 class SubjectDataSource: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
     
-    var subjectList: [String] = ["Select a Subject"]
+    var subjectList: [String] = ["Select a Term First"]
     var selectedSubject: String = ""
     
     override init() {
