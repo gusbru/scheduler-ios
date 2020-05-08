@@ -13,8 +13,6 @@ class SearchViewController: UIViewController {
     
     var selectedTerm: String?
     var selectedSubject: String?
-    var dataController: NSPersistentContainer?
-    var fetchTermResultsController: NSFetchedResultsController<Term>!
     var fetchSubjectResultsController: NSFetchedResultsController<Subject>!
 
     @IBOutlet weak var termPickerView: UIPickerView!
@@ -34,24 +32,16 @@ class SearchViewController: UIViewController {
         cleanViewStack()
         
         // setup delegate and data source for picker views
-        handleDelegateAndDataSource()
+        setupDelegateAndDataSource()
         
         subscribeNotifications()
         
-        // disable search button
-        searchButton.isEnabled = false
-        subjectPickerView.isUserInteractionEnabled = false
-        subjectPickerView.alpha = 0.5
-        loadingSpinner.startAnimating()
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
-        
-        // setup data persistence
-        setupDataPersistence()
         
         // fetch terms
         fetchTerms()
@@ -132,6 +122,16 @@ class SearchViewController: UIViewController {
         
     }
     
+    @objc func handleFetchError(_ notificaton: Notification) {
+        loadingSpinner.stopAnimating()
+        displayAlert(message: notificaton.userInfo!["errorMessage"] as? String ?? "Erro fetching Terms")
+    }
+    
+    @objc func handleFetchTermFinished() {
+        termPickerView.reloadAllComponents()
+        loadingSpinner.stopAnimating()
+    }
+    
     private func cleanViewStack() {
         guard let navigationController = self.navigationController else { return }
         var navigationArray = navigationController.viewControllers // To get all UIViewController stack as Array
@@ -140,27 +140,6 @@ class SearchViewController: UIViewController {
     }
     
     
-    // MARK:- Data Persistence
-    private func setupDataPersistence() {
-        let dataController = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
-        self.dataController = dataController
-        
-        let fetchRequestTerm: NSFetchRequest<Term> = Term.fetchRequest()
-        let sortDescriptorTerm = NSSortDescriptor(key: "id", ascending: true)
-        fetchRequestTerm.sortDescriptors = [sortDescriptorTerm]
-        fetchTermResultsController = NSFetchedResultsController(fetchRequest: fetchRequestTerm, managedObjectContext: dataController.viewContext, sectionNameKeyPath: nil, cacheName: nil)
-        fetchTermResultsController.delegate = termDataSource
-        termDataSource.fetchResultsController = fetchTermResultsController
-        do {
-            try fetchTermResultsController.performFetch()
-        } catch {
-            fatalError("Cannot fetch terms \(error.localizedDescription)")
-        }
-        
-        
-        
-        
-    }
     
     // MARK:- Notifications
     fileprivate func subscribeNotifications() {
@@ -169,6 +148,8 @@ class SearchViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(endLoadingSubjects), name: NSNotification.Name(rawValue: "endGetSubjects"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleSelectedSubject(_:)), name: NSNotification.Name(rawValue: "subjectSelected"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleSelectedTerm(_:)), name: NSNotification.Name(rawValue: "term selected"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleFetchError(_:)), name: NSNotification.Name(rawValue: "fetchError"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleFetchTermFinished), name: NSNotification.Name(rawValue: "fetchTermFinished"), object: nil)
     }
     
     fileprivate func unsubscribeNotifications() {
@@ -176,10 +157,12 @@ class SearchViewController: UIViewController {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "endGetSubjects"), object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "subjectSelected"), object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "term selected"), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "fetchError"), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "fetchTermFinished"), object: nil)
     }
     
     // MARK:- handle delegate and data source
-    private func handleDelegateAndDataSource() {
+    private func setupDelegateAndDataSource() {
         termPickerView.dataSource = termDataSource
         termPickerView.delegate = termDataSource
         subjectPickerView.dataSource = subjectDataSource
@@ -188,45 +171,12 @@ class SearchViewController: UIViewController {
     
     // MARK:- Fetch Terms
     fileprivate func fetchTerms() {
-        SchedulerClient.getTerms { (response, error) in
-            if let error = error {
-                self.loadingSpinner.stopAnimating()
-                self.displayAlert(message: error.localizedDescription)
-                return
-            }
-            
-            
-            
-            for term in response {
-                
-                var isNewTerm = true
-                for savedTerm in self.fetchTermResultsController.fetchedObjects! {
-                    if savedTerm.name == term.termName {
-                        isNewTerm = false
-                        break
-                    }
-                }
-                
-                
-                if isNewTerm {
-                    // term not found on memory --> save it
-                    print("term not found on memory --> save it")
-                    do {
-                        // create a Term object
-                        let newTerm = Term(context: self.dataController!.viewContext)
-                        newTerm.id = term.id
-                        newTerm.name = term.termName
-                        try self.dataController?.viewContext.save()
-                    } catch {
-                        print("error saving term \(error.localizedDescription)")
-                    }
-                }
-                
-                
-            }
-            self.termPickerView.reloadAllComponents()
-            self.loadingSpinner.stopAnimating()
-        }
+        searchButton.isEnabled = false
+        subjectPickerView.isUserInteractionEnabled = false
+        subjectPickerView.alpha = 0.5
+        loadingSpinner.startAnimating()
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "fetchTerms"), object: nil)
     }
     
     
