@@ -34,8 +34,6 @@ class SearchViewController: UIViewController {
         // setup delegate and data source for picker views
         setupDelegateAndDataSource()
         
-        subscribeNotifications()
-        
         
     }
     
@@ -43,8 +41,14 @@ class SearchViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
         
+        // subscribe to notifications
+        subscribeNotifications()
+        
         // fetch terms
         fetchTerms()
+        
+        print("viewWillAppear")
+        checkState()
     }
     
     
@@ -52,6 +56,8 @@ class SearchViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         unsubscribeNotifications()
+        
+        print("viewDidDisappear")
     }
     
 
@@ -68,6 +74,15 @@ class SearchViewController: UIViewController {
     }
     
     @IBAction func clear(_ sender: Any) {
+        searchButton.isEnabled = false
+        
+        termPickerView.isUserInteractionEnabled = true
+        termPickerView.alpha = 1.0
+        
+        subjectPickerView.isUserInteractionEnabled = false
+        subjectPickerView.alpha = 0.5
+        
+        loadingSpinner.stopAnimating()
     }
     
     @IBAction func logout(_ sender: Any) {
@@ -101,8 +116,10 @@ class SearchViewController: UIViewController {
     @objc func handleSelectedTerm(_ notification: Notification) {
         guard let userInfo = notification.userInfo else { return }
         
+        
         if let selectedTerm = userInfo["selectedTerm"] {
-            self.selectedTerm = selectedTerm as? String
+            let term = selectedTerm as! Term
+            self.selectedTerm = term.name
             subjectPickerView.isUserInteractionEnabled = true
             subjectPickerView.alpha = 1.0
         }
@@ -111,7 +128,7 @@ class SearchViewController: UIViewController {
     
     @objc func handleSelectedSubject(_ notification: Notification) {
         guard let userInfo = notification.userInfo else { return }
-        
+
         if let selectedSubject = userInfo["selectedSubject"] {
             self.selectedSubject = selectedSubject as? String
         }
@@ -181,6 +198,15 @@ class SearchViewController: UIViewController {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "fetchTerms"), object: nil)
     }
     
+    // MARK:- Helper functions
+    private func checkState() {
+        if selectedSubject != nil && selectedTerm != nil {
+            searchButton.isEnabled = true
+            subjectPickerView.isUserInteractionEnabled = true
+            subjectPickerView.alpha = 1.0
+            loadingSpinner.stopAnimating()
+        }
+    }
     
 }
 

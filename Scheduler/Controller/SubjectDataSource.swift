@@ -46,6 +46,7 @@ class SubjectDataSource: NSObject, UIPickerViewDataSource, UIPickerViewDelegate 
         let aSubject = fetchResultsController?.object(at: indexPath)
         if let subject = aSubject?.name {
             selectedSubject = subject
+            
             NotificationCenter.default.post(name: NSNotification.Name("subjectSelected"), object: nil, userInfo: ["selectedSubject": selectedSubject])
         }
     }
@@ -107,7 +108,7 @@ class SubjectDataSource: NSObject, UIPickerViewDataSource, UIPickerViewDelegate 
             SchedulerClient.getSubject(term: selectedTerm.name!) { (response, error) in
                 if let error = error {
                     print(error)
-                    // TODO: send notification to SearchViewController to display the error
+                    // send notification to SearchViewController to display the error
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "errorFetchingSubjects"), object: nil, userInfo: ["errorMessage": error.localizedDescription])
                 }
                 
@@ -146,6 +147,7 @@ class SubjectDataSource: NSObject, UIPickerViewDataSource, UIPickerViewDelegate 
             
         }
     }
+    
     
 }
 
