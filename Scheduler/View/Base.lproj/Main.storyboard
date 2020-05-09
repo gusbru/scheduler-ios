@@ -120,22 +120,6 @@
             </objects>
             <point key="canvasLocation" x="-159.42028985507247" y="-252.45535714285714"/>
         </scene>
-        <!--Saved Schedules-->
-        <scene sceneID="5Hv-Jp-RkU">
-            <objects>
-                <viewController storyboardIdentifier="SavedSchedules" id="vv4-Ce-TgD" customClass="SavedSchedulesViewController" customModule="Scheduler" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ULe-Et-8PP">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="lDg-jb-DPj"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Saved Schedules" image="tray.full" catalog="system" id="ya9-74-hRK"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qJR-do-X1x" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1641" y="70"/>
-        </scene>
         <!--Search View Controller-->
         <scene sceneID="hs1-sK-c5t">
             <objects>
@@ -227,7 +211,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r7S-41-8ZT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1640.5797101449277" y="-719.19642857142856"/>
+            <point key="canvasLocation" x="1730" y="-252"/>
         </scene>
         <!--Result Search View Controller-->
         <scene sceneID="y0f-nt-ESG">
@@ -312,7 +296,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nig-kz-lPj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2578.2608695652175" y="-722.54464285714278"/>
+            <point key="canvasLocation" x="2665" y="-252"/>
         </scene>
         <!--Main Tab Bar View Controller-->
         <scene sceneID="4nG-5t-L0C">
@@ -325,7 +309,6 @@
                     </tabBar>
                     <connections>
                         <segue destination="G6Y-DW-iU2" kind="relationship" relationship="viewControllers" id="DlG-BI-W6W"/>
-                        <segue destination="vv4-Ce-TgD" kind="relationship" relationship="viewControllers" id="yXO-dR-nWw"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QeA-DT-xVb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -473,6 +456,5 @@
     <resources>
         <image name="education@32" width="32" height="32"/>
         <image name="preferences@512" width="512" height="512"/>
-        <image name="tray.full" catalog="system" width="128" height="88"/>
     </resources>
 </document>
