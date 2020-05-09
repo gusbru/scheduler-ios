@@ -12,16 +12,16 @@
         <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <relationship name="courseSections" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CourseSection" inverseName="subjects" inverseEntity="CourseSection"/>
-        <relationship name="terms" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Term" inverseName="subjects" inverseEntity="Term"/>
+        <relationship name="term" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Term" inverseName="subjects" inverseEntity="Term"/>
     </entity>
     <entity name="Term" representedClassName="Term" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <relationship name="subjects" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Subject" inverseName="terms" inverseEntity="Subject"/>
+        <relationship name="subjects" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Subject" inverseName="term" inverseEntity="Subject"/>
     </entity>
     <elements>
         <element name="CourseSection" positionX="61.51953125" positionY="-22.49609375" width="128" height="118"/>
-        <element name="Term" positionX="-428.31640625" positionY="-10.97265625" width="128" height="88"/>
         <element name="Subject" positionX="-208.94921875" positionY="-24.1328125" width="128" height="118"/>
+        <element name="Term" positionX="-428.31640625" positionY="-10.97265625" width="128" height="88"/>
     </elements>
 </model>

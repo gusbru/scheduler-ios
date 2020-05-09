@@ -42,11 +42,16 @@ class TermDataSource: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let indexPath = IndexPath(row: row, section: component)
         let aTerm = fetchResultsController.object(at: indexPath)
-        selectedTerm = aTerm.name ?? ""
+        if let term = aTerm.name {
+            selectedTerm = term
+            
+            NotificationCenter.default.post(name: NSNotification.Name("term selected"), object: nil, userInfo: ["selectedTerm": aTerm])
+        }
         
-        NotificationCenter.default.post(name: NSNotification.Name("term selected"), object: nil, userInfo: ["selectedTerm": selectedTerm])
+        
     }
     
+    // MARK:- Notifications
     private func subscribeNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(fetchTerms), name: NSNotification.Name(rawValue: "fetchTerms"), object: nil)
     }
@@ -75,10 +80,6 @@ extension TermDataSource: NSFetchedResultsControllerDelegate{
         } catch {
             fatalError("Cannot fetch terms \(error.localizedDescription)")
         }
-        
-        
-        
-        
     }
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
@@ -110,8 +111,6 @@ extension TermDataSource {
                 return
             }
             
-            
-            
             for term in response {
                 
                 var isNewTerm = true
@@ -137,8 +136,9 @@ extension TermDataSource {
                     }
                 }
                 
-                
             }
+            
+            // end of fetch. Notify
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "fetchTermFinished"), object: nil)
         }
     }

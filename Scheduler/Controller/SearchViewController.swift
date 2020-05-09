@@ -124,7 +124,7 @@ class SearchViewController: UIViewController {
     
     @objc func handleFetchError(_ notificaton: Notification) {
         loadingSpinner.stopAnimating()
-        displayAlert(message: notificaton.userInfo!["errorMessage"] as? String ?? "Erro fetching Terms")
+        displayAlert(message: notificaton.userInfo!["errorMessage"] as? String ?? "Erro fetching")
     }
     
     @objc func handleFetchTermFinished() {
@@ -150,6 +150,7 @@ class SearchViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(handleSelectedTerm(_:)), name: NSNotification.Name(rawValue: "term selected"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleFetchError(_:)), name: NSNotification.Name(rawValue: "fetchError"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleFetchTermFinished), name: NSNotification.Name(rawValue: "fetchTermFinished"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleFetchError(_:)), name: NSNotification.Name(rawValue: "errorFetchingSubjects"), object: nil)
     }
     
     fileprivate func unsubscribeNotifications() {
@@ -159,6 +160,7 @@ class SearchViewController: UIViewController {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "term selected"), object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "fetchError"), object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "fetchTermFinished"), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "errorFetchingSubjects"), object: nil)
     }
     
     // MARK:- handle delegate and data source
